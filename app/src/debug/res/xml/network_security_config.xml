@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  SOLO para la variante debug (desarrollo y pruebas): la API local de MediCitas corre en
+  http://localhost:3000 sin TLS. Se permite texto plano para el emulador (10.0.2.2), el propio
+  equipo y la red local donde un celular de pruebas alcanza el Mac por su IP.
+  La variante release usa src/main/res/xml/network_security_config.xml, que lo prohíbe.
+-->
+<network-security-config>
+    <base-config cleartextTrafficPermitted="true" />
+</network-security-config>
