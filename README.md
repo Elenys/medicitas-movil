@@ -57,3 +57,9 @@ Se cambia al compilar con `-Pmedicitas.apiBaseUrl=http://192.168.1.50:3000/` o d
 - **Texto plano (HTTP) solo en la variante debug** (`src/debug/res/xml/network_security_config.xml`),
   para la API local. La variante release prohíbe el texto plano y no reenvía la cookie `Secure` por HTTP.
 - Médicos y administradores no pueden usar esta app: se les cierra la sesión y se les remite a la web.
+
+## Capturas (emulador Pixel 7, Android 15, API real)
+
+| Ingreso | Mis citas | Día | Hora | Detalle | Avisos |
+|---|---|---|---|---|---|
+| ![](docs/capturas/01_login.png) | ![](docs/capturas/02_citas.png) | ![](docs/capturas/05_calendario.png) | ![](docs/capturas/06_horas.png) | ![](docs/capturas/09_detalle.png) | ![](docs/capturas/13_avisos.png) |
