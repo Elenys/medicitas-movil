@@ -26,11 +26,26 @@ android {
             // Desarrollo: la API local responde por HTTP y su cookie lleva la marca Secure.
             buildConfigField("boolean", "DEV_INSECURE_TRANSPORT", "true")
         }
+        // Demo: igual que debug (API local por HTTP, firmada con la llave de depuración) pero optimizada
+        // con R8, que elimina el código y los recursos que la app no usa. Es la APK que se entrega.
+        create("demo") {
+            initWith(getByName("debug"))
+            isDebuggable = false
+            isMinifyEnabled = true
+            isShrinkResources = true
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            matchingFallbacks += listOf("debug")
+        }
         release {
             isMinifyEnabled = false
             buildConfigField("boolean", "DEV_INSECURE_TRANSPORT", "false")
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
+    }
+
+    sourceSets {
+        // La variante demo usa la misma configuración de red de debug (permite HTTP hacia la API local).
+        getByName("demo").res.srcDirs("src/debug/res")
     }
 
     compileOptions {

@@ -42,7 +42,8 @@ com.medicitas.movil
 - La API de MediCitas corriendo (`docker compose up` en el repositorio de MediCitas → http://localhost:3000).
 
 ```bash
-./gradlew assembleDebug          # APK en app/build/outputs/apk/debug/app-debug.apk
+./gradlew assembleDemo           # APK optimizada con R8 (1,5 MB) en app/build/outputs/apk/demo/app-demo.apk
+./gradlew assembleDebug          # APK de depuración sin optimizar (≈19 MB)
 ./gradlew testDebugUnitTest      # 40 pruebas unitarias JVM
 ```
 
@@ -54,7 +55,7 @@ Se cambia al compilar con `-Pmedicitas.apiBaseUrl=http://192.168.1.50:3000/` o d
 
 - La sesión es la cookie httpOnly que emite el servidor; vive solo en memoria y se borra al cerrar
   sesión o ante un 401. La app no guarda contraseñas ni tokens en disco.
-- **Texto plano (HTTP) solo en la variante debug** (`src/debug/res/xml/network_security_config.xml`),
+- **Texto plano (HTTP) solo en las variantes debug y demo** (`src/debug/res/xml/network_security_config.xml`),
   para la API local. La variante release prohíbe el texto plano y no reenvía la cookie `Secure` por HTTP.
 - Médicos y administradores no pueden usar esta app: se les cierra la sesión y se les remite a la web.
 
